@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onmouseover and onmouseout event</title>
+    <style>
+        body{
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            border: 2px solid lightblue;
+            background-color: aliceblue;
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+            width: 70vw;
+            height: 70vh;
+            gap: 30%;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link" style="display: flex; align-items: center; justify-content: center; margin: 20px 0px;">
+        <button style="padding: 10px; "><a style="text-decoration: none;" href="./index2.html">Go to 'Work 2'</a></button>
+    </div>
+    <div class="container">
+        <div class="box box1" onmouseover="box1zoomin()" onmouseout="zoomout()">
+            <img src="./spotify.jpg" alt="">
+        </div>
+        <div class="box box2" onmouseover="box2zoomin()" onmouseout="zoomout()">
+            <img src="./twitt.jpg" alt="">
+        </div>
+    </div>
+</body>
+
+<script>
+    function box1zoomin() {
+        document.querySelector(".box1").style.transition = "transform 1s";
+        document.querySelector(".box1").style.transform = "scale(1.5)";
+        document.querySelector(".box2").style.transition = "transform 1s";
+        document.querySelector(".box2").style.transform = "scale(0.5)";
+    }
+    function box2zoomin() {
+        document.querySelector(".box1").style.transition = "transform 1s";
+        document.querySelector(".box1").style.transform = "scale(0.5)";
+        document.querySelector(".box2").style.transition = "transform 1s";
+        document.querySelector(".box2").style.transform = "scale(1.5)";
+    }
+    function zoomout() {
+        document.querySelector(".box1").style.transform = "scale(1)";
+        document.querySelector(".box2").style.transform = "scale(1)";
+    }
+</script>
+
+</html>

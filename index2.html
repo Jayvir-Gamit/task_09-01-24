@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generate password from string method</title>
+    <style>
+        body {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            border: 2px solid lightblue;
+            background-color: aliceblue;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            width: 50vw;
+            height: 50vh;
+        }
+
+        .form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .passinput{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link" style="display: flex; align-items: center; justify-content: center; margin: 20px 0px;">
+        <button style="padding: 10px; "><a style="text-decoration: none;" href="./index1.html">Go to 'Work 1'</a></button>
+    </div>
+    <div class="container">
+        <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Write strong password such as John@123</h2>
+        <div class="form">
+            <span style="margin-right: 5px;">Password: </span><input type="text" name="password" id="password" style="margin-right: 20px;">
+            <button onclick="fun()">Submit</button>
+        </div>
+        <div class="passinput" style="padding: 0px 20px;"></div>
+        <div class="notice" style="text-align: center;"></div>
+    </div>
+</body>
+
+<script>
+    function fun() {
+        let pw = document.querySelector("#password").value;
+        let Fword = pw.slice(0,1);
+        let name = pw.slice(1,4);
+        let symbol = pw.slice(4,5);
+        let num = pw.slice(5);
+        // let intnum = parseInt(num, 10);
+
+
+        console.log(!isNaN(num))
+
+        if (Fword == Fword.toUpperCase() && typeof(name) == "string" && symbol == '@' && !isNaN(num) == true) {
+            
+            document.querySelector(".passinput").innerHTML = "You have successfully created strong password.";
+            document.querySelector(".passinput").style.color = "green";
+            document.querySelector(".notice").style.display = "none";
+        } else {
+
+            document.querySelector(".passinput").innerHTML = "You have not successfully created strong password. e.g John@123. first word is capital then three letters, fifth character is @ and then number.";
+            document.querySelector(".passinput").style.color = "red";
+
+            if (Fword != Fword.toUpperCase()) {
+                document.querySelector(".notice").innerHTML = "First word is not capital";
+                document.querySelector(".notice").style.color = "darkred";
+            }
+            if (typeof(name) != "string") {
+                document.querySelector(".notice").innerHTML = "string is not properly written";
+                document.querySelector(".notice").style.color = "darkred";
+            }
+            if (symbol != '@') {
+                document.querySelector(".notice").innerHTML = "at 5th place '@' is not written";
+                document.querySelector(".notice").style.color = "darkred";
+            }
+            if (!isNaN(num) != true) {
+                document.querySelector(".notice").innerHTML = "after '@' number is not written";
+                document.querySelector(".notice").style.color = "darkred";
+            }
+        }
+    }
+</script>
+</html>
